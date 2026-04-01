@@ -11,22 +11,22 @@ const TEAMS = [
 ];
 
 const CATEGORIES = [
-  { name: 'Creative',           icon: '🎨' },
-  { name: 'General Knowledge',  icon: '🧠' },
-  { name: 'Logical',            icon: '🔢' },
-  { name: 'Physical',           icon: '💪' },
-  { name: 'Talent Show',        icon: '🎭' },
+  { name: 'Creative',  icon: '🎨', games: ['Movies',       'Music',           'Stories']     },
+  { name: 'Knowledge', icon: '🧠', games: ['AI',           'Who/What Am I',   'Rapid Fire']  },
+  { name: 'Logic',     icon: '🔢', games: ['Put in Order', 'Human Body',      'Mathematics'] },
+  { name: 'Physical',  icon: '💪', games: ['Team Builds',  'Endurance',       'Relay']       },
+  { name: 'Talent',    icon: '🎭', games: ['Theatre',      'Stand-Up',        'Dance']       },
 ];
 
 const MINI_GAMES = [
-  { name: 'Whiteboard',   type: 'whiteboard', icon: '🖊️' },
-  { name: 'Level Choice', type: 'level',      icon: '🎯' },
-  { name: 'Buzzer',       type: 'buzzer',     icon: '🔔' },
+  { type: 'whiteboard', icon: '🖊️' },
+  { type: 'level',      icon: '🎯' },
+  { type: 'buzzer',     icon: '🔔' },
 ];
 
 const SCORE_MAX = 10;
 const JOKER_BONUS = 15;
-const STORAGE_KEY = 'gameday_scoreboard_v2';
+const STORAGE_KEY = 'gameday_scoreboard_v3';
 
 // ============================================================
 // STATE BUILDER
@@ -38,7 +38,7 @@ function buildInitialState() {
       name: cat.name,
       miniGames: MINI_GAMES.map((mg, mgi) => ({
         id: mgi,
-        name: mg.name,
+        name: cat.games[mgi],
         type: mg.type,
         scores: { red: 0, blue: 0, green: 0, yellow: 0 },
       })),
@@ -382,6 +382,8 @@ function renderMiniGamesTable(cat) {
 
 function renderMiniGameRow(cat, mg) {
   const mgDef = MINI_GAMES[mg.id] || { icon: '📋' };
+  const catDef = CATEGORIES[cat.id] || { games: [] };
+  const defaultName = catDef.games[mg.id] || `Game ${mg.id + 1}`;
   const winners = getMiniGameWinners(mg);
 
   const row = el('div', { className: 'mini-game-row', 'data-mg-id': mg.id });
@@ -393,12 +395,12 @@ function renderMiniGameRow(cat, mg) {
     className: 'mg-name-input',
     type: 'text',
     value: mg.name,
-    placeholder: mgDef.name,
+    placeholder: defaultName,
     maxLength: 25,
     'aria-label': `Mini-game ${mg.id + 1} name`,
   });
   nameInput.addEventListener('input', () => {
-    mg.name = nameInput.value || mgDef.name;
+    mg.name = nameInput.value || defaultName;
     saveState();
   });
   label.append(typeIcon, nameInput);
