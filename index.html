@@ -12,11 +12,29 @@
 <body>
   <div class="stadium-bg"></div>
 
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <div class="hero-scene">
+      <div class="hero-figure">🎯</div>
+      <div class="hero-figure">🧠</div>
+      <div class="hero-figure">🏆</div>
+      <div class="hero-figure">⚡</div>
+      <div class="hero-figure">🎨</div>
+    </div>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <div class="trophy-icon">🏆</div>
       <h1 class="title">GAME DAY</h1>
       <p class="subtitle">SCOREBOARD</p>
+    </div>
+    <div class="header-meta">
+      <span class="header-meta-pill">4 TEAMS</span>
+      <span class="header-meta-pill">5 CATEGORIES</span>
+      <span class="header-meta-pill">165 PTS MAX</span>
     </div>
     <div class="header-decoration"></div>
   </header>
@@ -27,15 +45,40 @@
     <div class="totals-board" id="totals-board">
       <!-- filled by JS -->
     </div>
+    <div class="totals-footer">
+      <span class="totals-footer-note">MAX 150 pts · Joker win = +15 · Total possible <strong>165</strong></span>
+    </div>
   </section>
 
-  <!-- GAMES -->
-  <section class="games-section">
-    <h2 class="section-label">GAMES</h2>
-    <div class="games-grid" id="games-grid">
+  <!-- CATEGORIES -->
+  <section class="categories-section">
+    <h2 class="section-label">CATEGORIES</h2>
+    <div id="categories-container">
       <!-- filled by JS -->
     </div>
   </section>
+
+  <!-- RULES FOOTER -->
+  <footer class="rules-footer">
+    <div class="rules-grid">
+      <div class="rule-chip">
+        <span class="rule-icon">🖊️</span>
+        <div><strong>Whiteboard</strong><span>All teams · +2 correct · 0 wrong</span></div>
+      </div>
+      <div class="rule-chip">
+        <span class="rule-icon">🎯</span>
+        <div><strong>Level Choice</strong><span>1 player · pick difficulty · +2 correct</span></div>
+      </div>
+      <div class="rule-chip">
+        <span class="rule-icon">🔔</span>
+        <div><strong>Buzzer</strong><span>Fastest wins · +2 first correct only</span></div>
+      </div>
+      <div class="rule-chip">
+        <span class="rule-icon">🃏</span>
+        <div><strong>Joker</strong><span>Once per team · declare before category · win = +15</span></div>
+      </div>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
