@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Day Scoreboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stadium-bg"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="trophy-icon">🏆</div>
+      <h1 class="title">GAME DAY</h1>
+      <p class="subtitle">SCOREBOARD</p>
+    </div>
+    <div class="header-decoration"></div>
+  </header>
+
+  <!-- TOTALS BOARD -->
+  <section class="totals-section">
+    <h2 class="section-label">TOTAL SCORES</h2>
+    <div class="totals-board" id="totals-board">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section class="games-section">
+    <h2 class="section-label">GAMES</h2>
+    <div class="games-grid" id="games-grid">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
